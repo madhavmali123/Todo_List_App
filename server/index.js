@@ -2,11 +2,13 @@ const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const TodoModel = require('./Models/Todo')
+const dotenv = require('dotenv');
 const port = 3000;
 const app = express();
 
+dotenv.config();
 
-mongoose.connect('mongodb+srv://farmer:Farm%40123@farmer.zzgbxos.mongodb.net/test')
+mongoose.connect(process.env.MongodbUrl)
 app.use(cors());
 app.use(express.json()); 
 
