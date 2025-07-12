@@ -48,6 +48,14 @@ app.delete('/delete/:id', (req,res)=>{
 
 })
 
+app.put('/edit/:id', (req,res)=>{
+    const {id} =req.params;
+    const {task} = req.body;
+    TodoModel.findByIdAndUpdate({_id: id},{task: task})
+    .then(result=> res.json(result))
+    .catch(err=> res.json(err))
+})
+
 app.listen(port,() =>{
 console.log(`sever is running on port ${port}`);
 });
